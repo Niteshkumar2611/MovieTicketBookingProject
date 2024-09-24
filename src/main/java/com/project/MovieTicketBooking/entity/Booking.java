@@ -14,10 +14,10 @@ public class Booking {
     @ManyToOne
     private User user;
 
-    @ManyToOne
-    private Showtime showtime;
+    @ManyToOne 
+    private Movie movie;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Seat> seats;
     private LocalDateTime bookingDate;
     private String bookingStatus;
@@ -37,12 +37,7 @@ public class Booking {
     public void setUser(User user) {
         this.user = user;
     }
-    public Showtime getShowtime() {
-        return showtime;
-    }
-    public void setShowtime(Showtime showtime) {
-        this.showtime = showtime;
-    }
+   
     public List<Seat> getSeats() {
         return seats;
     }
@@ -60,6 +55,14 @@ public class Booking {
     }
     public void setBookingStatus(String bookingStatus) {
         this.bookingStatus = bookingStatus;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     
